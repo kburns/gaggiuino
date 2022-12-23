@@ -8,6 +8,9 @@
 #include <Adafruit_MAX31855.h>
 SPIClass thermoSPI(thermoDI, thermoDO, thermoCLK);
 Adafruit_MAX31855 thermocouple(thermoCS, &thermoSPI);
+#elif defined RTD
+#include "rtd.h"
+RTDWrapper thermocouple = RTDWrapper(thermoCS, thermoDI, thermoDO, thermoCLK);
 #else
 #include <max6675.h>
 SPIClass thermoSPI(thermoDI, thermoDO, thermoCLK);
